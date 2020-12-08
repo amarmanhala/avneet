@@ -26,7 +26,7 @@ const Tags = ({ data }) => {
       <Layout className="container">
         <Header />
         <SEO
-          title="Tags"
+          title="Skills"
           description="This page consists of various Tags on various technologies that I'll be using
           to write blogs. You can check the blogs related to the tags by clicking on any of the tags below."
           path="tags"
@@ -34,21 +34,30 @@ const Tags = ({ data }) => {
         <SidebarWrapper>
           <>
             <div className="marginTopTitle">
-              <h1 className="titleSeparate">#Tags</h1>
+              <h1 className="titleSeparate">My Skills</h1>
             </div>
             <Row gutter={[30, 20]}>
-              {
-                edges.map((val) => (
-                  <Col key={val.node.name} xs={24} sm={24} md={12} lg={8}>
+                  <Col xs={24} sm={24} md={12} lg={8}>
                     <TagCard
-                      img={val.node.childImageSharp.fluid.src}
-                      name={val.node.name}
-                      description={tagData[val.node.name].description}
-                      color={tagData[val.node.name].color}
+                      img=""
+                      name="Collabration"
+                      description="I will effectively work with my peers. Listen and share Ideas, and compromise to create a good product"
                     />
                   </Col>
-                ))
-              }
+                  <Col xs={24} sm={24} md={12} lg={8}>
+                    <TagCard
+                      img=""
+                      name="Problem Solving"
+                      description="I will think about a problem and explain how to solve it."
+                    />
+                  </Col>
+                  <Col xs={24} sm={24} md={12} lg={8}>
+                    <TagCard
+                      img=""
+                      name="Technological Literacy"
+                      description="I will demonstrate digital citizenship, creativity, innovation, and flexibility."
+                    />
+                  </Col>
             </Row>
           </>
         </SidebarWrapper>

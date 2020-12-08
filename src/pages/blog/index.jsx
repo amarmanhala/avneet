@@ -1,77 +1,78 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import { Layout, Row, Col } from 'antd';
-import Header from '../../components/PageLayout/Header';
+/* eslint-disable react/forbid-prop-types */
+import React from "react"
+import { Layout, Row, Col } from "antd"
+import { graphql } from "gatsby"
+import Header from "../../components/PageLayout/Header"
+import SEO from "../../components/Seo"
+import SidebarWrapper from "../../components/PageLayout/Sidebar"
+import TagCard from "../../components/TagCard"
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component"
+import "react-vertical-timeline-component/style.min.css"
 
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import PostCard from '../../components/PostCard';
-import SEO from '../../components/Seo';
-
-const Blog = ({ data }) => (
-  <Layout className="outerPadding">
-    <Layout className="container">
-      <Header />
-      <SEO
-        title="Blog"
-        description="I like blogging about various web technologies and other stuff related to
-          javascript and other trends like graphql, prisma etc. This blog expresses my views of various technologies
-          and scenarios I have come across in realtime."
-        path="blog"
-      />
-      <SidebarWrapper>
-        <div className="marginTopTitle">
-          <h1 className="titleSeparate">Blog</h1>
-        </div>
-        <Row gutter={[20, 20]}>
-          {
-            data.allMarkdownRemark && data.allMarkdownRemark.edges.map((val, key) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={12} lg={8}>
-                <PostCard data={val} />
-              </Col>
-            ))
-          }
-        </Row>
-      </SidebarWrapper>
+const Blog = ({ data }) => {
+  return (
+    <Layout className="outerPadding">
+      <Layout className="container">
+        <Header />
+        <SEO
+          title="Education"
+          description="This page consists of various Tags on various technologies that I'll be using
+          to write blogs. You can check the blogs related to the tags by clicking on any of the tags below."
+          path="tags"
+        />
+        <SidebarWrapper>
+          <>
+            <div className="marginTopTitle">
+              <h1 className="titleSeparate">Education and Experience</h1>
+            </div>
+            <VerticalTimeline>
+              <VerticalTimelineElement
+                className="vertical-timeline-element--work"
+                date="Mar 04, 2017"
+                iconStyle={{ background: "#304cfc", color: "#fff" }}
+                icon=""
+              >
+                <h3 className="vertical-timeline-element-title">
+                Senior Secondary Education in Medical
+                </h3>
+                <p>
+                Uttrakhand , India
+                </p>
+              </VerticalTimelineElement>
+              <VerticalTimelineElement
+                className="vertical-timeline-element--work"
+                date="Dec 10, 2020"
+                iconStyle={{ background: "#ff965c", color: "#fff" }}
+                icon=""
+              >
+                <h3 className="vertical-timeline-element-title">
+                UNDERGRADUATE DIPLOMA - BUSINESS ADMINISTRATION
+                </h3>
+                <p>ALPHA COLLEGE OF BUSINESS AND TECHNOLOGY, SCARBOROUGH</p>
+              </VerticalTimelineElement>
+              <VerticalTimelineElement
+                className="vertical-timeline-element--work"
+                date="Dec 05, 2020"
+                iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+                icon=""
+              >
+                <h3 className="vertical-timeline-element-title">
+                PROFESSIONAL EXPERIENCE
+                </h3>
+                <h4 className="vertical-timeline-element-subtitle">
+                STLTH
+                </h4>
+                <p>Lab Supervisor Experienced in maintaining workforce. maintained clean and fully operational laboratory Equipment. Experienced in supervising the loading and unloading of cargo. Experienced in dealing conflicts at workplace with emotional Intelligence.</p>
+              </VerticalTimelineElement>
+            </VerticalTimeline>
+          </>
+        </SidebarWrapper>
+      </Layout>
     </Layout>
-  </Layout>
-);
+  )
+}
 
-Blog.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    }).isRequired,
-  }).isRequired,
-};
-
-export const query = graphql`
-  {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/index.md$/" } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            date
-            path
-            title
-            tags
-            excerpt
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 288) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-export default Blog;
+export default Blog

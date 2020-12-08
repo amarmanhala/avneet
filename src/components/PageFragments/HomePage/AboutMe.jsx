@@ -4,18 +4,17 @@ import AboutTile from '../../AbouTile';
 import { stripTags, domHtml } from '../../../utils/stripTags';
 
 import SEO from '../../Seo';
+import { Link } from 'gatsby';
 
 const pageText = {
-  paraOne: `Hello !! My name is Rolwin Reevan Monteiro. I'm a full stack web developer who is
-    passionate about various web technologies. I like to experiment with different web
-    technologies. I have an experience of nearly 3 years working with LAMP stack, MERN stack
-    and ELK stack. Building fancy UI's just like this one that your seeing 😅 and writing blogs about tech stacks
-    is what Rolwin loves to do. Check my blog which I update every week for some Javascript and some
-    cool notes on web technologies.`,
-  paraTwo: `Currently I work mostly with Javascript technologies like ReactJS and NodeJS. I also
-    have hands on experience working with cloud infrastructures like <b>AWS/GCP</b> and have deployed applications
-    keeping scalability in mind. Docker, Kubernetes, Jenkins, SonarQube are some of the cool
-    tools I use for <b>CI/ CD</b>. I'm always a learner and a self taught programmer.`,
+  paraOne: `I have Actively been part of the workforce since age 17. 
+  Through variety of work experiences I have continuously  maintained the same core values. 
+  I believe  that integrity is one of my strongest traits. Additionally, I am organized and punctual. I am ambitiously dedicated, 
+  receiving multiple employee and school related recognition awards. From the last two years I am working in a vape lab as a supervisor.`,
+  paraTwo: `Further, I have also worked as a customer service representative 
+  which added up me with wonderful experience. I am not afraid to go above and 
+  beyond the call of duty and seek leadership responsibilities. I take and give instructions 
+  well and look forward to become an asset to the team.`,
 };
 
 const AboutMe = () => {
@@ -35,15 +34,18 @@ const AboutMe = () => {
         </p>
         <p dangerouslySetInnerHTML={domHtml(pageText.paraTwo)} />
       </div>
+      <h1 className="titleSeparate">Artifacts</h1>
       <Row gutter={[20, 20]}>
         <Col xs={24} sm={24} md={12} lg={8}>
+          <a href="https://flipgrid.com/4eafaa80" target="blank">
           <AboutTile
             img="location.png"
             height={60}
             alt="location image"
-            textH4="Born and bought up in"
-            textH3="Mangalore, KA, India"
+            textH3="Dream Job"
           />
+          </a>
+        
         </Col>
         <Col xs={24} sm={24} md={12} lg={8}>
           <AboutTile
@@ -52,7 +54,7 @@ const AboutMe = () => {
             textH4="Love Coffee"
             textH3="Coffee + Me = Happiness"
           />
-        </Col>
+        </Col> 
         <Col xs={24} sm={24} md={12} lg={8}>
           <AboutTile
             img="meeting.png"
